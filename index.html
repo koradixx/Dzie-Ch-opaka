@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nasza Gra ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#32104e;color:#4c2762}.top{height:64px;background:linear-gradient(#7c35b2,#421260);color:#fff;display:flex;align-items:center;padding:10px 14px;font-weight:900;box-shadow:0 3px 12px #0008}.logo{font-size:21px;font-style:italic}.logo b{color:#ff8cdb}.score{margin-left:auto;background:#2b0d43;padding:8px 12px;border-radius:20px}.map{height:calc(100vh - 64px);min-height:580px;position:relative;overflow:hidden;background:linear-gradient(#70d7ff 0 45%,#63b75b 45% 100%)}.sun{position:absolute;width:90px;height:90px;border-radius:50%;background:#fff58a;left:5%;top:5%}.hill{position:absolute;width:70%;height:45%;right:-15%;top:10%;background:#428346;clip-path:polygon(0 100%,25% 30%,43% 65%,63% 15%,100% 100%)}.city{position:absolute;left:15%;right:15%;top:25%;height:42%;display:flex;align-items:flex-end;gap:4px}.b{width:17%;border:3px solid #583c70;border-bottom:0;box-shadow:0 3px 8px #0004}.b:nth-child(1){height:45%;background:#bc92df}.b:nth-child(2){height:70%;background:#77cfe3}.b:nth-child(3){height:55%;background:#f4a1c4}.b:nth-child(4){height:82%;background:#9c8ee1}.b:nth-child(5){height:63%;background:#72c5ad}.road{position:absolute;width:140%;height:200px;left:-20%;bottom:-90px;background:#4c4952;transform:rotate(-5deg);border-top:7px solid #eee}.title{position:absolute;top:18px;left:50%;transform:translateX(-50%);color:#fff;font-size:26px;font-weight:900;text-shadow:3px 3px #52246e;white-space:nowrap}.btn{position:absolute;border:3px solid #fff;background:linear-gradient(#fff,#eadcf8);color:#54286f;font-weight:900;padding:9px 13px;border-radius:8px;box-shadow:0 4px 0 #683e81,0 7px 12px #0005}.btn small{display:block;font-size:10px;color:#805b91}.quiz{left:7%;top:34%}.photos{right:7%;top:28%}.story{left:25%;top:57%}.movies{right:16%;top:54%}.gift{position:absolute;right:7%;bottom:17%;font-size:50px;animation:pulse 1.5s infinite}@keyframes pulse{50%{transform:scale(1.15) rotate(5deg)}}.chars{position:absolute;left:0;right:0;bottom:42px;display:flex;justify-content:space-between;padding:0 12px;pointer-events:none}.char{text-align:center;color:#fff;font-weight:bold;text-shadow:2px 2px #351243}.av{font-size:58px}.tag{background:#713493;border:2px solid #fff;border-radius:15px;padding:5px 10px}.screen{display:none;min-height:calc(100vh - 64px);padding:16px;background:linear-gradient(135deg,#663095,#d35ac1)}.screen.on{display:block}.window{max-width:760px;margin:auto;background:#f8efff;border:4px solid #fff;border-radius:17px;padding:15px;box-shadow:0 7px 24px #0007}.window h1{text-align:center}.back,.answer{border:0;border-radius:12px;padding:11px 14px;font-weight:bold}.back{background:#69318e;color:#fff}.answers{display:grid;gap:9px}.answer{background:#fff;color:#54246f;border:2px solid #a96bd1}.center{text-align:center}.card{background:#fff;border-radius:14px;padding:14px;margin:12px 0}.level{background:#713493;color:#fff;border-radius:12px;padding:5px 9px;display:inline-block}.album{min-height:300px;border:3px dashed #a268c2;border-radius:15px;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}.popup{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.popup.on{display:flex}.popbox{max-width:380px;background:#fff;border:5px solid #d78bf2;border-radius:20px;padding:24px;text-align:center}@media(max-width:600px){.title{font-size:20px}.btn{font-size:12px;padding:8px}.quiz{top:28%}.photos{top:23%}.story{left:17%;top:51%}.movies{right:6%;top:47%}.av{font-size:48px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo">MOVIE<b>LOVE</b>PLANET</div><div class="score">❤️ <span id="hearts">0</span></div></div>
+
+<main id="map" class="map">
+<div class="sun"></div><div class="hill"></div><div class="title">✨ NASZA PLANETA ✨</div>
+<div class="city"><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div></div><div class="road"></div>
+<button class="btn quiz" onclick="openS('quiz')">❓ QUIZ<small>Jak dobrze nas znasz?</small></button>
+<button class="btn photos" onclick="openS('photos')">📸 ZDJĘCIA<small>Nasze wspomnienia</small></button>
+<button class="btn story" onclick="openS('story')">🎮 HISTORIA<small>Nasze levele</small></button>
+<button class="btn movies" onclick="openS('movies')">🎬 FILMY<small>Nasze momenty</small></button>
+<div class="gift" onclick="secret()">🎁</div>
+<div class="chars"><div class="char"><div class="av">👩🏻</div><div class="tag">Kornelia</div></div><div class="char"><div class="av">👨🏻</div><div class="tag">Adrian</div></div></div>
+</main>
+
+<section id="quiz" class="screen"><div class="window"><button class="back" onclick="home()">← MAPA</button><h1>❓ QUIZ O NAS</h1><div class="center">❤️ Punkty: <b id="points">0</b><h2 id="question"></h2><div id="answers" class="answers"></div><p id="result"></p></div></div></section>
+
+<section id="photos" class="screen"><div class="window"><button class="back" onclick="home()">← MAPA</button><h1>📸 NASZE WSPOMNIENIA</h1><div class="album"><div><div style="font-size:60px">📸💕</div><h2>Nasz album</h2><p>Tu w następnym kroku wstawimy przesłane przez Ciebie zdjęcia i przewijanie ◀ ▶.</p></div></div></div></section>
+
+<section id="story" class="screen"><div class="window"><button class="back" onclick="home()">← MAPA</button><h1>🎮 NASZA HISTORIA</h1>
+<div class="card"><span class="level">LEVEL 1</span><h2>MovieStarPlanet 🎬</h2><p>Wszystko zaczęło się właśnie tutaj. Dwie osoby po dwóch stronach ekranu nie wiedziały jeszcze, jak długa historia właśnie się zaczyna.</p></div>
+<div class="card"><span class="level">LEVEL 2</span><h2>Prawie 600 km 🚗</h2><p>Polska i Niemcy. Kilometry pomiędzy nami, ale droga ciągle prowadziła z powrotem do siebie.</p></div>
+<div class="card"><span class="level">LEVEL 3</span><h2>Trudniejszy poziom 💔</h2><p>Była przerwa i inne drogi. Przez chwilę mogło się wydawać, że to koniec.</p></div>
+<div class="card"><span class="level">LEVEL 4</span><h2>10.12.2022 ❤️</h2><p>Plot twist. Historia się nie skończyła — zaczęła się jej kolejna część.</p></div>
+<div class="card"><span class="level">LEVEL 5</span><h2>Wspólne życie 🏠</h2><p>Kolejny level odblokowany. Tym razem już razem.</p></div>
+<div class="card"><span class="level">LEVEL ∞</span><h2>TO BE CONTINUED...</h2><p>Ten level nadal trwa. ❤️</p></div>
+</div></section>
+
+<section id="movies" class="screen"><div class="window"><button class="back" onclick="home()">← MAPA</button><h1>🎬 NASZE FILMY</h1><div class="card center"><div style="font-size:65px">🚗</div><h2>Droga do Ciebie</h2><p>Tu dodamy filmik z jazdy autem. 🚗💨 → ❤️</p></div><div class="card center"><div style="font-size:55px">🔒</div><h2>???</h2><p>Kolejne wspomnienie czeka na odblokowanie.</p></div></div></section>
+
+<div id="popup" class="popup"><div class="popbox"><div style="font-size:60px">❤️</div><h2>SEKRET ODBLOKOWANY!</h2><p>Znalazłeś ukryty prezent. +1 ❤️</p><p>Niektóre rzeczy zaczynają się przypadkiem… a zostają na całe życie.</p><button class="back" onclick="closePop()">ZAMKNIJ</button></div></div>
+
+<script>
+let hearts=0,secretFound=false,qi=0,score=0;
+const qs=[
+["Gdzie zaczęła się nasza historia?",["Instagram","MovieStarPlanet","Szkoła","Na ulicy"],1],
+["Kiedy zostaliśmy parą?",["10.12.2022","14.02.2022","01.01.2023","10.10.2022"],0],
+["Co było największym przeciwnikiem na początku?",["Brak internetu 😂","Prawie 600 km","Szkoła","MSP"],1],
+["Jaki level gramy teraz?",["GAME OVER","Tutorial","Wspólne życie ❤️","Nie wiadomo"],2]
+];
+function openS(id){document.getElementById("map").style.display="none";document.querySelectorAll(".screen").forEach(x=>x.classList.remove("on"));document.getElementById(id).classList.add("on");if(id==="quiz")startQuiz()}
+function home(){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("on"));document.getElementById("map").style.display="block"}
+function addHeart(){document.getElementById("hearts").textContent=++hearts}
+function secret(){document.getElementById("popup").classList.add("on");if(!secretFound){secretFound=true;addHeart()}}
+function closePop(){document.getElementById("popup").classList.remove("on")}
+function startQuiz(){qi=0;score=0;document.getElementById("points").textContent=0;showQ()}
+function showQ(){let q=qs[qi],a=document.getElementById("answers");document.getElementById("question").textContent=q[0];a.innerHTML="";q[1].forEach((t,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=t;b.onclick=()=>answer(i);a.appendChild(b)})}
+function answer(i){let ok=i===qs[qi][2],r=document.getElementById("result");if(ok){score++;addHeart();r.textContent="❤️ DOBRZE! +1 serduszko"}else r.textContent="😂 Serio?! Zła odpowiedź!";document.getElementById("points").textContent=score;setTimeout(()=>{r.textContent="";qi++;if(qi>=qs.length)finish();else showQ()},900)}
+function finish(){document.getElementById("question").innerHTML="🏆 KONIEC QUIZU!<br>Twój wynik: "+score+" / "+qs.length+" ❤️";document.getElementById("answers").innerHTML='<button class="answer" onclick="startQuiz()">ZAGRAJ JESZCZE RAZ 🔄</button>'}
+</script>
+</body>
+</html>
